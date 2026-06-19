@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Repositorio de Recursos Digitales</title>
+  <style>
+    :root{
+      --azul:#24364d;
+      --azul2:#344b68;
+      --beige:#c6ab72;
+      --claro:#f3f4f6;
+      --blanco:#ffffff;
+      --texto:#223046;
+      --gris:#667085;
+      --sombra:0 18px 40px rgba(24, 36, 54, 0.15);
+      --radio:22px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;}
+
+    body{
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(198,171,114,0.18), transparent 32%),
+        linear-gradient(135deg, #f8f8f8, #eef1f5);
+      color:var(--texto);
+      min-height:100vh;
+      line-height:1.5;
+    }
+
+    header{
+      background: linear-gradient(135deg, var(--azul), var(--azul2));
+      color: var(--blanco);
+      padding: 60px 20px 85px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    header::before, header::after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      background: rgba(255,255,255,0.08);
+    }
+
+    header::before{
+      width:240px;height:240px;left:-70px;top:-70px;
+    }
+
+    header::after{
+      width:320px;height:320px;right:-100px;bottom:-130px;
+    }
+
+    .header-content{
+      max-width:1000px;
+      margin:0 auto;
+      position:relative;
+      z-index:1;
+    }
+
+    .tag{
+      display:inline-block;
+      padding:8px 16px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.12);
+      border:1px solid rgba(255,255,255,0.18);
+      color:#f3e0a8;
+      font-size:0.95rem;
+      margin-bottom:18px;
+    }
+
+    h1{
+      font-size: clamp(2rem, 4.8vw, 3.7rem);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+
+    .subtitle{
+      max-width: 850px;
+      margin: 0 auto;
+      font-size: 1.08rem;
+      color: rgba(255,255,255,0.9);
+    }
+
+    main{
+      max-width: 1180px;
+      margin: -45px auto 0;
+      padding: 0 20px 40px;
+      position:relative;
+      z-index:2;
+    }
+
+    .info-box{
+      background:var(--blanco);
+      border-radius:var(--radio);
+      box-shadow:var(--sombra);
+      padding:28px;
+      margin-bottom:30px;
+      border:1px solid rgba(36,54,77,0.08);
+    }
+
+    .info-box h2{
+      color:var(--azul);
+      margin-bottom:8px;
+      font-size:1.4rem;
+    }
+
+    .info-box p{
+      color:var(--gris);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:26px;
+    }
+
+    .card{
+      background:var(--blanco);
+      border-radius:var(--radio);
+      overflow:hidden;
+      box-shadow:0 14px 34px rgba(36,54,77,0.12);
+      border:1px solid rgba(36,54,77,0.08);
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 22px 42px rgba(36,54,77,0.18);
+    }
+
+    .card-top{
+      padding:26px;
+      color:var(--blanco);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      background:
+        linear-gradient(135deg, rgba(36,54,77,0.98), rgba(52,75,104,0.96)),
+        radial-gradient(circle at top right, rgba(198,171,114,0.6), transparent 35%);
+      min-height:150px;
+    }
+
+    .topic{
+      color:#ecd59d;
+      font-size:.85rem;
+      text-transform:uppercase;
+      font-weight:700;
+      letter-spacing:.8px;
+      margin-bottom:6px;
+    }
+
+    .card-top h3{
+      font-size:1.25rem;
+      line-height:1.25;
+    }
+
+    .icon{
+      width:76px;
+      height:76px;
+      border-radius:50%;
+      background:rgba(255,255,255,0.12);
+      border:1px solid rgba(255,255,255,0.22);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:2.2rem;
+      flex-shrink:0;
+    }
+
+    .card-body{
+      padding:24px;
+    }
+
+    .label{
+      color:var(--beige);
+      font-size:.82rem;
+      text-transform:uppercase;
+      font-weight:800;
+      letter-spacing:.8px;
+      margin-bottom:10px;
+    }
+
+    .authors{
+      list-style:none;
+      margin-bottom:16px;
+    }
+
+    .authors li{
+      background:#f7f8fa;
+      border:1px solid rgba(36,54,77,0.08);
+      color:var(--texto);
+      padding:10px 12px;
+      border-radius:12px;
+      margin-bottom:10px;
+      font-weight:600;
+    }
+
+    .description{
+      color:var(--gris);
+      margin-bottom:20px;
+      min-height:72px;
+    }
+
+    .btn{
+      display:inline-flex;
+      width:100%;
+      justify-content:center;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      background:linear-gradient(135deg, var(--azul), var(--azul2));
+      color:var(--blanco);
+      padding:13px 16px;
+      border-radius:14px;
+      font-weight:800;
+      transition:filter .2s ease, transform .2s ease;
+    }
+
+    .btn:hover{
+      filter:brightness(1.07);
+      transform:scale(1.02);
+    }
+
+    footer{
+      text-align:center;
+      padding:26px 18px 34px;
+      color:var(--gris);
+      font-size:.95rem;
+    }
+
+    footer strong{
+      color:var(--azul);
+    }
+
+    @media (max-width: 980px){
+      .grid{
+        grid-template-columns:repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 680px){
+      .grid{
+        grid-template-columns:1fr;
+      }
+
+      header{
+        padding:48px 18px 72px;
+      }
+
+      main{
+        padding:0 16px 30px;
+      }
+
+      .card-top{
+        min-height:auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="tag">📚 Maestría en Enseñanza del Lenguaje y la Lengua Castellana</div>
+      <h1>Repositorio de Recursos Digitales</h1>
+      <p class="subtitle">
+        Espacio académico para consultar aplicaciones educativas interactivas.
+        Cada tarjeta reúne el recurso y los autores que corresponden a ese enlace.
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <section class="info-box">
+      <h2>Recursos organizados por enlace</h2>
+      <p>
+        A continuación se presentan los recursos digitales agrupados según el listado suministrado.
+        En cada tarjeta encontrarás el nombre del recurso, los autores asociados y un único botón para acceder al enlace correspondiente.
+      </p>
+    </section>
+
+    <section class="grid">
+
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <div class="topic">Pensamiento lógico</div>
+            <h3>El mundo mágico de los números</h3>
+          </div>
+          <div class="icon">🔢</div>
+        </div>
+        <div class="card-body">
+          <div class="label">Autores</div>
+          <ul class="authors">
+            <li>Narlys Villalobo Ropain</li>
+          </ul>
+          <p class="description">
+            Recurso digital interactivo orientado al fortalecimiento de habilidades numéricas en contextos de aprendizaje.
+          </p>
+          <a class="btn" href="https://codinajuancamilo-star.github.io/El-mundo-m-gico-de-los-n-meros/" target="_blank" rel="noopener noreferrer">
+            Abrir recurso ↗
+          </a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <div class="topic">Aprendizaje interactivo</div>
+            <h3>Aventura del Saber 2</h3>
+          </div>
+          <div class="icon">🧭</div>
+        </div>
+        <div class="card-body">
+          <div class="label">Autores</div>
+          <ul class="authors">
+            <li>José Zapata</li>
+            <li>Ana Maria</li>
+          </ul>
+          <p class="description">
+            Aplicación educativa diseñada para promover experiencias de exploración, reto y participación activa en el aprendizaje.
+          </p>
+          <a class="btn" href="https://lucelis24.github.io/Aventuradelsaber2/" target="_blank" rel="noopener noreferrer">
+            Abrir recurso ↗
+          </a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <div class="topic">Vida saludable</div>
+            <h3>Alimentos saludables</h3>
+          </div>
+          <div class="icon">🥗</div>
+        </div>
+        <div class="card-body">
+          <div class="label">Autores</div>
+          <ul class="authors">
+            <li>Kateren sequeda</li>
+            <li>Narlys Villalobo Ropain</li>
+            <li>Ronnie sequeda</li>
+          </ul>
+          <p class="description">
+            Recurso digital enfocado en hábitos alimenticios saludables mediante actividades y contenidos interactivos.
+          </p>
+          <a class="btn" href="https://issafonseca25-del.github.io/Alimentos-saludables/" target="_blank" rel="noopener noreferrer">
+            Abrir recurso ↗
+          </a>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <footer>
+    <strong>Repositorio de Recursos Digitales</strong> · Diseño web en HTML, CSS y JavaScript
+  </footer>
+</body>
+</html>
